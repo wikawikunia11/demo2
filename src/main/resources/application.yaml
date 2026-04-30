@@ -1,3 +1,27 @@
 spring:
   application:
     name: demo2
+
+  datasource:
+    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://postgres:5432/demo2
+    username: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    defer-datasource-initialization: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        format_sql: true
+
+  # data.sql on every start
+  sql:
+    init:
+      mode: always
+
+server:
+  port: 8081
